@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário de Medicação - CuidAconchego</title>
+    <meta name="description" content="Calendário de medicação para organizar horários e acompanhar a adesão terapêutica">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../index.html" onclick="voltarRecursos()">
+                <i class="fas fa-arrow-left me-2"></i>
+                <span class="brand-text">CuidAconchego</span>
+            </a>
+            <h4 class="mb-0 text-cobre fw-bold">Calendário de Medicação</h4>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- Seção de Controles -->
+        <section class="py-4 bg-bege">
+            <div class="container">
+                <div class="row g-3">
+                    <div class="col-md-6 col-lg-3">
+                        <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#medicamentoModal">
+                            <i class="fas fa-plus me-2"></i>Adicionar Medicamento
+                        </button>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <button class="btn btn-outline-primary w-100" onclick="exportarCalendario()">
+                            <i class="fas fa-download me-2"></i>Exportar PDF
+                        </button>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <select class="form-select" id="filtroMedicamento">
+                            <option value="">Todos os medicamentos</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                            <input type="date" class="form-control" id="dataAtual">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calendário Principal -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="calendar-container">
+                            <div class="calendar-header">
+                                <button class="btn btn-outline-secondary" onclick="navegarMes(-1)">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <h3 class="mb-0 text-cobre fw-bold" id="mesAno"></h3>
+                                <button class="btn btn-outline-secondary" onclick="navegarMes(1)">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                            <div class="calendar-grid" id="calendarioGrid">
+                                <!-- Cabeçalho dos dias da semana -->
+                                <div class="calendar-day-header">Dom</div>
+                                <div class="calendar-day-header">Seg</div>
+                                <div class="calendar-day-header">Ter</div>
+                                <div class="calendar-day-header">Qua</div>
+                                <div class="calendar-day-header">Qui</div>
+                                <div class="calendar-day-header">Sex</div>
+                                <div class="calendar-day-header">Sáb</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lista de Medicamentos de Hoje -->
+        <section class="py-5 bg-bege">
+            <div class="container">
+                <h3 class="text-cobre fw-bold mb-4">
+                    <i class="fas fa-pills me-2"></i>Medicamentos de Hoje
+                </h3>
+                <div class="row" id="medicamentosHoje">
+                    <div class="col-12 text-center text-muted">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Nenhum medicamento agendado para hoje
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Estatísticas -->
+        <section class="py-5">
+            <div class="container">
+                <h3 class="text-cobre fw-bold mb-4">
+                    <i class="fas fa-chart-line me-2"></i>Estatísticas
+                </h3>
+                <div class="row g-4">
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-pills"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h4 id="totalMedicamentos">0</h4>
+                                <p>Total de Medicamentos</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h4 id="medicamentosTomados">0</h4>
+                                <p>Tomados Hoje</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h4 id="medicamentosPendentes">0</h4>
+                                <p>Pendentes Hoje</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-percentage"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h4 id="percentualAdesao">0%</h4>
+                                <p>Adesão Semanal</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal para Adicionar Medicamento -->
+    <div class="modal fade" id="medicamentoModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-cobre fw-bold">
+                        <i class="fas fa-pills me-2"></i>Adicionar Medicamento
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formMedicamento">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="nomeMedicamento" class="form-label fw-bold">Nome do Medicamento</label>
+                                <input type="text" class="form-control" id="nomeMedicamento" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="dosagem" class="form-label fw-bold">Dosagem</label>
+                                <input type="text" class="form-control" id="dosagem" placeholder="Ex: 500mg" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="frequencia" class="form-label fw-bold">Frequência</label>
+                                <select class="form-select" id="frequencia" required>
+                                    <option value="">Selecione a frequência</option>
+                                    <option value="1">1x por dia</option>
+                                    <option value="2">2x por dia</option>
+                                    <option value="3">3x por dia</option>
+                                    <option value="4">4x por dia</option>
+                                    <option value="personalizada">Personalizada</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="dataInicio" class="form-label fw-bold">Data de Início</label>
+                                <input type="date" class="form-control" id="dataInicio" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="dataFim" class="form-label fw-bold">Data de Fim (opcional)</label>
+                                <input type="date" class="form-control" id="dataFim">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="cor" class="form-label fw-bold">Cor</label>
+                                <select class="form-select" id="cor">
+                                    <option value="#D78F69">Terracota</option>
+                                    <option value="#B46F5A">Cobre</option>
+                                    <option value="#A7C7E7">Azul Pastel</option>
+                                    <option value="#28a745">Verde</option>
+                                    <option value="#dc3545">Vermelho</option>
+                                    <option value="#6f42c1">Roxo</option>
+                                </select>
+                            </div>
+                            <div class="col-12" id="horariosContainer">
+                                <label class="form-label fw-bold">Horários</label>
+                                <div id="horariosInputs">
+                                    <div class="input-group mb-2">
+                                        <span class="input-group-text">1º horário</span>
+                                        <input type="time" class="form-control horario-input" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="observacoes" class="form-label fw-bold">Observações</label>
+                                <textarea class="form-control" id="observacoes" rows="3" placeholder="Ex: Tomar com alimentos, antes das refeições..."></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="salvarMedicamento()">
+                        <i class="fas fa-save me-2"></i>Salvar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Detalhes do Dia -->
+    <div class="modal fade" id="detalheDiaModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-cobre fw-bold" id="tituloDetalheDia"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="conteudoDetalheDia">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+

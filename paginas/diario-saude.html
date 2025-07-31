@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diário de Saúde - CuidAconchego | Registo Pessoal de Saúde</title>
+    <meta name="description" content="Diário de saúde digital para registo de sintomas, medicação, consultas e acompanhamento do bem-estar. Acessível via web e aplicação móvel.">
+    <meta name="keywords" content="diário saúde, registo sintomas, acompanhamento medicação, consultas médicas, bem-estar, saúde digital, cuidadores">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" href="../imagens/logo-01.png" type="image/png">
+</head>
+<body>
+    <header class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../index.html">
+                <img src="../imagens/logo-01.png" alt="CuidAconchego Logo" style="height: 40px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <nav class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sobre-nos.html">Sobre Nós</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="recursos.html">Recursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="comunidade.html">Comunidade</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="testemunhos.html">Testemunhos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contactos.html">Contactos</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="user-controls ms-3" id="userControls">
+                <button class="btn btn-outline-primary btn-sm" id="loginBtn">
+                    <i class="fas fa-user me-1"></i>Entrar
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- Seção Hero -->
+        <section class="py-5 bg-bege">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <h1 class="display-4 fw-bold mb-4 text-cobre">
+                            <i class="fas fa-book-medical me-3"></i>Diário de Saúde
+                        </h1>
+                        <p class="lead">
+                            Registe e acompanhe o seu estado de saúde ou do seu ente querido de forma organizada e segura. 
+                            Acesso disponível via web e aplicação móvel.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Opções de Acesso -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row g-4 mb-5">
+                    <div class="col-md-6">
+                        <div class="card h-100 shadow-sm border-0 access-card">
+                            <div class="card-body p-4 text-center">
+                                <div class="access-icon mb-3">
+                                    <i class="fas fa-globe fa-4x text-cobre"></i>
+                                </div>
+                                <h3 class="text-cobre fw-bold mb-3">Acesso Web</h3>
+                                <p class="mb-4">
+                                    Aceda ao seu diário de saúde diretamente no navegador. 
+                                    Ideal para registos detalhados e visualização completa dos dados.
+                                </p>
+                                <button class="btn btn-primary btn-lg w-100" onclick="abrirDiarioWeb()">
+                                    <i class="fas fa-external-link-alt me-2"></i>Abrir Diário Web
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100 shadow-sm border-0 access-card">
+                            <div class="card-body p-4 text-center">
+                                <div class="access-icon mb-3">
+                                    <i class="fas fa-mobile-alt fa-4x text-terracota"></i>
+                                </div>
+                                <h3 class="text-cobre fw-bold mb-3">Aplicação Móvel</h3>
+                                <p class="mb-4">
+                                    Descarregue a nossa aplicação móvel para registos rápidos e lembretes automáticos. 
+                                    Disponível para Android e iOS.
+                                </p>
+                                <div class="d-flex flex-column gap-2">
+                                    <a href="#" class="btn btn-outline-primary" onclick="descarregarApp('android')">
+                                        <i class="fab fa-android me-2"></i>Descarregar para Android
+                                    </a>
+                                    <a href="#" class="btn btn-outline-primary" onclick="descarregarApp('ios')">
+                                        <i class="fab fa-apple me-2"></i>Descarregar para iOS
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interface do Diário Web -->
+        <section class="py-5 bg-bege" id="diarioWebSection" style="display: none;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card shadow border-0">
+                            <div class="card-header bg-cobre text-white">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h4 class="mb-0">
+                                        <i class="fas fa-book-medical me-2"></i>Meu Diário de Saúde
+                                    </h4>
+                                    <button class="btn btn-light btn-sm" onclick="fecharDiarioWeb()">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body p-4">
+                                <!-- Navegação do Diário -->
+                                <ul class="nav nav-tabs mb-4" id="diarioTabs" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="sintomas-tab" data-bs-toggle="tab" data-bs-target="#sintomas" type="button" role="tab">
+                                            <i class="fas fa-thermometer-half me-1"></i>Sintomas
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="medicacao-tab" data-bs-toggle="tab" data-bs-target="#medicacao" type="button" role="tab">
+                                            <i class="fas fa-pills me-1"></i>Medicação
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="consultas-tab" data-bs-toggle="tab" data-bs-target="#consultas" type="button" role="tab">
+                                            <i class="fas fa-user-md me-1"></i>Consultas
+                                        </button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="bem-estar-tab" data-bs-toggle="tab" data-bs-target="#bem-estar" type="button" role="tab">
+                                            <i class="fas fa-heart me-1"></i>Bem-estar
+                                        </button>
+                                    </li>
+                                </ul>
+
+                                <!-- Conteúdo das Abas -->
+                                <div class="tab-content" id="diarioTabContent">
+                                    <!-- Aba Sintomas -->
+                                    <div class="tab-pane fade show active" id="sintomas" role="tabpanel">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label for="dataSintoma" class="form-label fw-bold">Data</label>
+                                                <input type="date" class="form-control" id="dataSintoma">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="horaSintoma" class="form-label fw-bold">Hora</label>
+                                                <input type="time" class="form-control" id="horaSintoma">
+                                            </div>
+                                            <div class="col-12">
+                                                <label for="tipoSintoma" class="form-label fw-bold">Tipo de Sintoma</label>
+                                                <select class="form-select" id="tipoSintoma">
+                                                    <option value="">Selecione o tipo</option>
+                                                    <option value="dor">Dor</option>
+                                                    <option value="febre">Febre</option>
+                                                    <option value="nausea">Náusea</option>
+                                                    <option value="fadiga">Fadiga</option>
+                                                    <option value="tontura">Tontura</option>
+                                                    <option value="outro">Outro</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-12">
+                                                <label for="intensidade" class="form-label fw-bold">Intensidade (1-10)</label>
+                                                <input type="range" class="form-range" min="1" max="10" id="intensidade" oninput="document.getElementById('intensidadeValue').textContent = this.value">
+                                                <div class="text-center">
+                                                    <span class="badge bg-primary" id="intensidadeValue">5</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <label for="descricaoSintoma" class="form-label fw-bold">Descrição</label>
+                                                <textarea class="form-control" id="descricaoSintoma" rows="3" placeholder="Descreva o sintoma em detalhe..."></textarea>
+                                            </div>
+                                            <div class="col-12">
+                                                <button class="btn btn-primary" onclick="salvarSintoma()">
+                                                    <i class="fas fa-save me-2"></i>Guardar Sintoma
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Aba Medicação -->
+                                    <div class="tab-pane fade" id="medicacao" role="tabpanel">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label for="dataMedicacao" class="form-label fw-bold">Data</label>
+                                                <input type="date" class="form-control" id="dataMedicacao">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="horaMedicacao" class="form-label fw-bold">Hora</label>
+                                                <input type="time" class="form-control" id="horaMedicacao">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="nomeMedicamento" class="form-label fw-bold">Medicamento</label>
+                                                <input type="text" class="form-control" id="nomeMedicamento" placeholder="Nome do medicamento">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="dosagemMedicamento" class="form-label fw-bold">Dosagem</label>
+                                                <input type="text" class="form-control" id="dosagemMedicamento" placeholder="Ex: 500mg">
+                                            </div>
+                                            <div class="col-12">
+                                                <label for="observacoesMedicacao" class="form-label fw-bold">Observações</label>
+                                                <textarea class="form-control" id="observacoesMedicacao" rows="2" placeholder="Efeitos secundários, reações, etc."></textarea>
+                                            </div>
+                                            <div class="col-12">
+                                                <button class="btn btn-primary" onclick="salvarMedicacao()">
+                                                    <i class="fas fa-save me-2"></i>Guardar Medicação
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Aba Consultas -->
+                                    <div class="tab-pane fade" id="consultas" role="tabpanel">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label for="dataConsulta" class="form-label fw-bold">Data da Consulta</label>
+                                                <input type="date" class="form-control" id="dataConsulta">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="horaConsulta" class="form-label fw-bold">Hora</label>
+                                                <input type="time" class="form-control" id="horaConsulta">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="tipoConsulta" class="form-label fw-bold">Tipo de Consulta</label>
+                                                <select class="form-select" id="tipoConsulta">
+                                                    <option value="">Selecione o tipo</option>
+                                                    <option value="medicina-geral">Medicina Geral</option>
+                                                    <option value="cardiologia">Cardiologia</option>
+                                                    <option value="neurologia">Neurologia</option>
+                                                    <option value="fisioterapia">Fisioterapia</option>
+                                                    <option value="psicologia">Psicologia</option>
+                                                    <option value="outro">Outro</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="medico" class="form-label fw-bold">Médico/Profissional</label>
+                                                <input type="text" class="form-control" id="medico" placeholder="Nome do profissional">
+                                            </div>
+                                            <div class="col-12">
+                                                <label for="resumoConsulta" class="form-label fw-bold">Resumo da Consulta</label>
+                                                <textarea class="form-control" id="resumoConsulta" rows="4" placeholder="Diagnóstico, recomendações, próximos passos..."></textarea>
+                                            </div>
+                                            <div class="col-12">
+                                                <button class="btn btn-primary" onclick="salvarConsulta()">
+                                                    <i class="fas fa-save me-2"></i>Guardar Consulta
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Aba Bem-estar -->
+                                    <div class="tab-pane fade" id="bem-estar" role="tabpanel">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label for="dataBemEstar" class="form-label fw-bold">Data</label>
+                                                <input type="date" class="form-control" id="dataBemEstar">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="humorGeral" class="form-label fw-bold">Humor Geral</label>
+                                                <select class="form-select" id="humorGeral">
+                                                    <option value="">Selecione</option>
+                                                    <option value="excelente">😊 Excelente</option>
+                                                    <option value="bom">🙂 Bom</option>
+                                                    <option value="neutro">😐 Neutro</option>
+                                                    <option value="mau">🙁 Mau</option>
+                                                    <option value="pessimo">😞 Péssimo</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="nivelEnergia" class="form-label fw-bold">Nível de Energia (1-10)</label>
+                                                <input type="range" class="form-range" min="1" max="10" id="nivelEnergia" oninput="document.getElementById('energiaValue').textContent = this.value">
+                                                <div class="text-center">
+                                                    <span class="badge bg-success" id="energiaValue">5</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="qualidadeSono" class="form-label fw-bold">Qualidade do Sono</label>
+                                                <select class="form-select" id="qualidadeSono">
+                                                    <option value="">Selecione</option>
+                                                    <option value="excelente">Excelente</option>
+                                                    <option value="boa">Boa</option>
+                                                    <option value="regular">Regular</option>
+                                                    <option value="ma">Má</option>
+                                                    <option value="pessima">Péssima</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-12">
+                                                <label for="atividades" class="form-label fw-bold">Atividades Realizadas</label>
+                                                <textarea class="form-control" id="atividades" rows="3" placeholder="Exercício, caminhadas, atividades sociais, hobbies..."></textarea>
+                                            </div>
+                                            <div class="col-12">
+                                                <label for="observacoesBemEstar" class="form-label fw-bold">Observações</label>
+                                                <textarea class="form-control" id="observacoesBemEstar" rows="2" placeholder="Outros aspetos relevantes do dia..."></textarea>
+                                            </div>
+                                            <div class="col-12">
+                                                <button class="btn btn-primary" onclick="salvarBemEstar()">
+                                                    <i class="fas fa-save me-2"></i>Guardar Registo
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Funcionalidades -->
+        <section class="py-5">
+            <div class="container">
+                <h2 class="display-5 fw-bold text-center mb-5 text-cobre">Funcionalidades do Diário</h2>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="feature-card p-4 text-center">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h5 class="text-cobre fw-bold">Relatórios</h5>
+                            <p>Gere relatórios detalhados para partilhar com profissionais de saúde</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="feature-card p-4 text-center">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                            <h5 class="text-cobre fw-bold">Lembretes</h5>
+                            <p>Receba notificações para medicação e consultas agendadas</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="feature-card p-4 text-center">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-cloud"></i>
+                            </div>
+                            <h5 class="text-cobre fw-bold">Sincronização</h5>
+                            <p>Dados sincronizados entre web e aplicação móvel</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="feature-card p-4 text-center">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h5 class="text-cobre fw-bold">Segurança</h5>
+                            <p>Dados protegidos com encriptação e backup automático</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Histórico de Registos -->
+        <section class="py-5 bg-bege">
+            <div class="container">
+                <h3 class="text-cobre fw-bold mb-4">
+                    <i class="fas fa-history me-2"></i>Registos Recentes
+                </h3>
+                <div class="row" id="registosRecentes">
+                    <div class="col-12 text-center text-muted">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Nenhum registo encontrado. Comece por adicionar o seu primeiro registo!
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer py-4">
+        <div class="custom-container">
+            <div class="custom-row">
+                <div class="custom-col-4">
+                    <h5 class="fw-bold mb-3">
+                        <img src="../imagens/logo-01.png" alt="CuidAconchego Logo" style="height: 40px;">
+                    </h5>
+                    <p class="mb-3">A Cuidar de quem cuida</p>
+                    <p class="text-muted">
+                        Proporcionamos suporte eficaz e humanizado aos cuidadores informais.
+                    </p>
+                </div>
+                <div class="custom-col-4">
+                    <h6 class="fw-bold mb-3">Links Úteis</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="sobre-nos.html" class="text-decoration-none">Sobre Nós</a></li>
+                        <li><a href="recursos.html" class="text-decoration-none">Recursos</a></li>
+                        <li><a href="testemunhos.html" class="text-decoration-none">Testemunhos</a></li>
+                        <li><a href="contactos.html" class="text-decoration-none">Contactos</a></li>
+                    </ul>
+                </div>
+                <div class="custom-col-4">
+                    <h6 class="fw-bold mb-3">Contacto</h6>
+                    <a href="mailto:plataformacuidaconchego@outlook.pt" class="text-decoration-none text-white"><i class="fas fa-envelope me-2"></i>plataformacuidaconchego@outlook.pt</a>
+                    <p class="mb-1"><i class="fas fa-phone me-2"></i>+351 914 216 147</p>
+                    <div class="social-links mt-3">
+                        <a href="https://www.facebook.com/people/CuidAconchego/61567592259614/" class="me-3"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/cuidaconchego/" class="me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/luis-sa-430368198/" class="me-3"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="custom-row">
+                <div class="custom-col-12 text-center">
+                    <p class="text-muted mb-0">&copy; 2025 CuidAconchego. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/user-system.js"></script>
+    <script>
+        // Sistema de armazenamento local para o diário
+        let diarioData = {
+            sintomas: JSON.parse(localStorage.getItem('diario_sintomas') || '[]'),
+            medicacao: JSON.parse(localStorage.getItem('diario_medicacao') || '[]'),
+            consultas: JSON.parse(localStorage.getItem('diario_consultas') || '[]'),
+            bemEstar: JSON.parse(localStorage.getItem('diario_bem_estar') || '[]')
+        };
+
+        // Funções para abrir/fechar o diário web
+        function abrirDiarioWeb() {
+            document.getElementById('diarioWebSection').style.display = 'block';
+            document.getElementById('diarioWebSection').scrollIntoView({ behavior: 'smooth' });
+            carregarRegistosRecentes();
+        }
+
+        function fecharDiarioWeb() {
+            document.getElementById('diarioWebSection').style.display = 'none';
+        }
+
+        // Funções para descarregar app (simuladas)
+        function descarregarApp(plataforma) {
+            if (plataforma === 'android') {
+                alert('Redirecionando para a Google Play Store...\n\nEm breve estará disponível a aplicação CuidAconchego para Android.');
+            } else if (plataforma === 'ios') {
+                alert('Redirecionando para a App Store...\n\nEm breve estará disponível a aplicação CuidAconchego para iOS.');
+            }
+        }
+
+        // Funções para guardar dados
+        function salvarSintoma() {
+            const sintoma = {
+                id: Date.now(),
+                data: document.getElementById('dataSintoma').value,
+                hora: document.getElementById('horaSintoma').value,
+                tipo: document.getElementById('tipoSintoma').value,
+                intensidade: document.getElementById('intensidade').value,
+                descricao: document.getElementById('descricaoSintoma').value,
+                timestamp: new Date().toISOString()
+            };
+
+            if (!sintoma.data || !sintoma.tipo || !sintoma.descricao) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+
+            diarioData.sintomas.push(sintoma);
+            localStorage.setItem('diario_sintomas', JSON.stringify(diarioData.sintomas));
+            
+            // Limpar formulário
+            document.getElementById('dataSintoma').value = '';
+            document.getElementById('horaSintoma').value = '';
+            document.getElementById('tipoSintoma').value = '';
+            document.getElementById('intensidade').value = '5';
+            document.getElementById('intensidadeValue').textContent = '5';
+            document.getElementById('descricaoSintoma').value = '';
+
+            alert('Sintoma guardado com sucesso!');
+            carregarRegistosRecentes();
+        }
+
+        function salvarMedicacao() {
+            const medicacao = {
+                id: Date.now(),
+                data: document.getElementById('dataMedicacao').value,
+                hora: document.getElementById('horaMedicacao').value,
+                nome: document.getElementById('nomeMedicamento').value,
+                dosagem: document.getElementById('dosagemMedicamento').value,
+                observacoes: document.getElementById('observacoesMedicacao').value,
+                timestamp: new Date().toISOString()
+            };
+
+            if (!medicacao.data || !medicacao.nome || !medicacao.dosagem) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+
+            diarioData.medicacao.push(medicacao);
+            localStorage.setItem('diario_medicacao', JSON.stringify(diarioData.medicacao));
+            
+            // Limpar formulário
+            document.getElementById('dataMedicacao').value = '';
+            document.getElementById('horaMedicacao').value = '';
+            document.getElementById('nomeMedicamento').value = '';
+            document.getElementById('dosagemMedicamento').value = '';
+            document.getElementById('observacoesMedicacao').value = '';
+
+            alert('Medicação guardada com sucesso!');
+            carregarRegistosRecentes();
+        }
+
+        function salvarConsulta() {
+            const consulta = {
+                id: Date.now(),
+                data: document.getElementById('dataConsulta').value,
+                hora: document.getElementById('horaConsulta').value,
+                tipo: document.getElementById('tipoConsulta').value,
+                medico: document.getElementById('medico').value,
+                resumo: document.getElementById('resumoConsulta').value,
+                timestamp: new Date().toISOString()
+            };
+
+            if (!consulta.data || !consulta.tipo || !consulta.resumo) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+
+            diarioData.consultas.push(consulta);
+            localStorage.setItem('diario_consultas', JSON.stringify(diarioData.consultas));
+            
+            // Limpar formulário
+            document.getElementById('dataConsulta').value = '';
+            document.getElementById('horaConsulta').value = '';
+            document.getElementById('tipoConsulta').value = '';
+            document.getElementById('medico').value = '';
+            document.getElementById('resumoConsulta').value = '';
+
+            alert('Consulta guardada com sucesso!');
+            carregarRegistosRecentes();
+        }
+
+        function salvarBemEstar() {
+            const bemEstar = {
+                id: Date.now(),
+                data: document.getElementById('dataBemEstar').value,
+                humor: document.getElementById('humorGeral').value,
+                energia: document.getElementById('nivelEnergia').value,
+                sono: document.getElementById('qualidadeSono').value,
+                atividades: document.getElementById('atividades').value,
+                observacoes: document.getElementById('observacoesBemEstar').value,
+                timestamp: new Date().toISOString()
+            };
+
+            if (!bemEstar.data || !bemEstar.humor) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+
+            diarioData.bemEstar.push(bemEstar);
+            localStorage.setItem('diario_bem_estar', JSON.stringify(diarioData.bemEstar));
+            
+            // Limpar formulário
+            document.getElementById('dataBemEstar').value = '';
+            document.getElementById('humorGeral').value = '';
+            document.getElementById('nivelEnergia').value = '5';
+            document.getElementById('energiaValue').textContent = '5';
+            document.getElementById('qualidadeSono').value = '';
+            document.getElementById('atividades').value = '';
+            document.getElementById('observacoesBemEstar').value = '';
+
+            alert('Registo de bem-estar guardado com sucesso!');
+            carregarRegistosRecentes();
+        }
+
+        // Função para carregar registos recentes
+        function carregarRegistosRecentes() {
+            const container = document.getElementById('registosRecentes');
+            let registos = [];
+
+            // Combinar todos os registos
+            diarioData.sintomas.forEach(item => registos.push({...item, tipo: 'sintoma'}));
+            diarioData.medicacao.forEach(item => registos.push({...item, tipo: 'medicacao'}));
+            diarioData.consultas.forEach(item => registos.push({...item, tipo: 'consulta'}));
+            diarioData.bemEstar.forEach(item => registos.push({...item, tipo: 'bem-estar'}));
+
+            // Ordenar por timestamp (mais recente primeiro)
+            registos.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+            if (registos.length === 0) {
+                container.innerHTML = `
+                    <div class="col-12 text-center text-muted">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Nenhum registo encontrado. Comece por adicionar o seu primeiro registo!
+                    </div>
+                `;
+                return;
+            }
+
+            // Mostrar apenas os 6 mais recentes
+            const registosRecentes = registos.slice(0, 6);
+            let html = '';
+
+            registosRecentes.forEach(registo => {
+                const icone = {
+                    'sintoma': 'fas fa-thermometer-half text-danger',
+                    'medicacao': 'fas fa-pills text-primary',
+                    'consulta': 'fas fa-user-md text-success',
+                    'bem-estar': 'fas fa-heart text-warning'
+                };
+
+                html += `
+                    <div class="col-md-6 col-lg-4 mb-3">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-2">
+                                    <i class="${icone[registo.tipo]} me-2"></i>
+                                    <h6 class="mb-0 text-capitalize">${registo.tipo}</h6>
+                                </div>
+                                <p class="small text-muted mb-1">
+                                    ${registo.data} ${registo.hora || ''}
+                                </p>
+                                <p class="card-text small">
+                                    ${registo.descricao || registo.nome || registo.resumo || registo.humor || 'Registo guardado'}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        // Inicializar datas com hoje
+        document.addEventListener('DOMContentLoaded', function() {
+            const hoje = new Date().toISOString().split('T')[0];
+            const agora = new Date().toTimeString().slice(0, 5);
+            
+            document.getElementById('dataSintoma').value = hoje;
+            document.getElementById('horaSintoma').value = agora;
+            document.getElementById('dataMedicacao').value = hoje;
+            document.getElementById('horaMedicacao').value = agora;
+            document.getElementById('dataBemEstar').value = hoje;
+        });
+    </script>
+</body>
+</html>
+

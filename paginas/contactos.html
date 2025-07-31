@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactos - CuidAconchego | Entre em Contacto para Apoio a Cuidadores</title>
+    <meta name="description" content="Entre em contacto com a CuidAconchego para apoio especializado a cuidadores informais. Oferecemos linha de apoio 24h, recursos educacionais e conexão com profissionais de saúde.">
+    <meta name="keywords" content="contacto cuidadores, apoio especializado, linha apoio 24h, suporte cuidadores, ajuda cuidadores informais, contacto profissionais saúde, apoio emocional, assistência cuidado">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" href="../imagens/logo-01.png" type="image/png">
+</head>
+<body>
+    <header class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../index.html">
+                <img src="../imagens/logo-01.png" alt="CuidAconchego Logo" style="height: 40px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <nav class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sobre-nos.html">Sobre Nós</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="recursos.html">Recursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="comunidade.html">Comunidade</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="testemunhos.html">Testemunhos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contactos.html">Contactos</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="main-content">
+        <section class="py-5 bg-bege">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <h1 class="display-4 fw-bold mb-4 text-cobre">Contactos</h1>
+                        <p class="lead">
+                            Estamos aqui para apoiá-lo. Entre em contacto connosco para esclarecer dúvidas, 
+                            obter mais informações ou partilhar a sua experiência como cuidador.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="contact-info-section">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3 text-cobre">Envie-nos uma Mensagem</h4>
+                            <form id="contactForm">
+                                <div class="mb-3">
+                                    <label for="nome" class="form-label">Nome Completo</label>
+                                    <input type="text" class="form-control" id="nome" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="telefone" class="form-label">Telefone</label>
+                                    <input type="tel" class="form-control" id="telefone">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="assunto" class="form-label">Assunto</label>
+                                    <select class="form-control" id="assunto" required>
+                                        <option value="">Selecione um assunto</option>
+                                        <option value="informacoes">Pedido de Informações</option>
+                                        <option value="apoio">Necessito de Apoio</option>
+                                        <option value="recursos">Recursos Educacionais</option>
+                                        <option value="testemunho">Partilhar Testemunho</option>
+                                        <option value="outro">Outro</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="mensagem" class="form-label">Mensagem</label>
+                                    <textarea class="form-control" id="mensagem" rows="4" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100" id="enviarMensagem">
+                                    <i class="fas fa-paper-plane me-2"></i>Enviar Mensagem
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3 text-cobre">Contacto Direto</h4>
+                            <div class="contact-info">
+                                <div class="mb-4">
+                                    <h6 class="fw-bold">Telefone</h6>
+                                    <p class="mb-1"><i class="fas fa-phone me-2 text-terracota"></i>+351 914 216 147</p>
+                                    <p class="small text-muted">Segunda a Sexta: 9h00 - 18h00</p>
+                                </div>
+                                <div class="mb-4">
+                                    <h6 class="fw-bold">Email</h6>
+                                    <p class="mb-1"><i class="fas fa-envelope me-2 text-terracota"></i>plataformacuidaconchego@outlook.pt</p>
+                                    <p class="small text-muted">Resposta em 24h úteis</p>
+                                </div>
+                                <div class="mb-4">
+                                    <h6 class="fw-bold">Linha de Apoio</h6>
+                                    <p class="mb-1"><i class="fas fa-headset me-2 text-terracota"></i>+351 800 123 456</p>
+                                    <p class="small text-muted">Apoio emocional 24h/dia</p>
+                                </div>
+                                <div class="mb-4">
+                                    <h6 class="fw-bold">Emergência</h6>
+                                    <p class="mb-1"><i class="fas fa-exclamation-triangle me-2 text-terracota"></i>112</p>
+                                    <p class="small text-muted">Para situações de emergência médica</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-share-alt"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3 text-cobre">Redes Sociais</h4>
+                            <div class="social-media-links">
+                                <div class="mb-3">
+                                    <a href="https://www.facebook.com/people/CuidAconchego/61567592259614/" class="d-flex align-items-center text-decoration-none p-3 rounded social-media-link">
+                                        <i class="fab fa-facebook fa-2x text-primary me-3"></i>
+                                        <div>
+                                            <h6 class="mb-0">Facebook</h6>
+                                            <small class="text-muted">Comunidade de cuidadores</small>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="mb-3">
+                                    <a href="https://www.instagram.com/cuidaconchego/" class="d-flex align-items-center text-decoration-none p-3 rounded social-media-link">
+                                        <i class="fab fa-instagram fa-2x text-danger me-3"></i>
+                                        <div>
+                                            <h6 class="mb-0">Instagram</h6>
+                                            <small class="text-muted">Dicas e inspiração diária</small>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="mb-3">
+                                    <a href="https://www.linkedin.com/in/luis-sa-430368198/" class="d-flex align-items-center text-decoration-none p-3 rounded social-media-link">
+                                        <i class="fab fa-linkedin fa-2x text-primary me-3"></i>
+                                        <div>
+                                            <h6 class="mb-0">LinkedIn</h6>
+                                            <small class="text-muted">Rede profissional</small>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="mb-3">
+                                    <a href="https://www.youtube.com/@ElderCareSupportNetwork" class="d-flex align-items-center text-decoration-none p-3 rounded social-media-link">
+                                        <i class="fab fa-youtube fa-2x text-danger me-3"></i>
+                                        <div>
+                                            <h6 class="mb-0">YouTube</h6>
+                                            <small class="text-muted">Vídeos educacionais</small>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <h6 class="fw-bold">Newsletter</h6>
+                                <p class="small text-muted mb-3">Receba dicas e recursos semanais</p>
+                                <div class="input-group">
+                                    <input type="email" class="form-control" placeholder="Seu email">
+                                    <button class="btn btn-outline-primary" type="button">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2 class="display-5 fw-bold text-center mb-5 text-cobre">Perguntas Frequentes</h2>
+                        <div class="accordion" id="faqAccordion">
+                            <div class="accordion-item mb-3">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                        Como posso aceder aos recursos da CuidAconchego?
+                                    </button>
+                                </h2>
+                                <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Todos os nossos recursos estão disponíveis gratuitamente na secção "Recursos" do nosso website. 
+                                        Pode também subscrever a nossa newsletter para receber conteúdos exclusivos.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item mb-3">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                        Oferecem apoio psicológico?
+                                    </button>
+                                </h2>
+                                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Sim, temos uma linha de apoio emocional disponível 24 horas por dia. 
+                                        Também facilitamos o contacto com psicólogos especializados em cuidadores informais.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item mb-3">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                        Como posso partilhar a minha experiência?
+                                    </button>
+                                </h2>
+                                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Pode partilhar o seu testemunho através do formulário de contacto, 
+                                        selecionando "Partilhar Testemunho" como assunto, ou através das nossas redes sociais.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-5 bg-bege">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <h2 class="display-5 fw-bold mb-3 text-cobre">Onde Estamos</h2>
+                        <p class="lead mb-4">
+                            Embora a nossa plataforma seja digital, temos parcerias em todo o país 
+                            para oferecer apoio presencial quando necessário.
+                        </p>
+                        <div class="bg-white rounded p-5 shadow">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3006.1215736390404!2d-8.623786423918482!3d41.11003587133629!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd247ad7344fe92f%3A0xa2bea40d0b311edc!2sCaf%C3%A9%20Hamburgo!5e0!3m2!1spt-PT!2spt!4v1750552245311!5m2!1spt-PT!2spt" style="width: 100%; height: 500px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <h5 class="fw-bold mt-3">Portugal Continental</h5>
+                            <p class="text-muted">Rede de apoio nacional com parcerias locais</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer py-4">
+        <div class="custom-container">
+            <div class="custom-row">
+                <div class="custom-col-4">
+                    <h5 class="fw-bold mb-3">
+                        <img src="../imagens/logo-01.png" alt="CuidAconchego Logo" style="height: 40px;">
+                    </h5>
+                    <p class="mb-3">A Cuidar de quem cuida</p>
+                    <p class="text-muted">
+                        Proporcionamos suporte eficaz e humanizado aos cuidadores informais.
+                    </p>
+                </div>
+                <div class="custom-col-4">
+                    <h6 class="fw-bold mb-3">Links Úteis</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="sobre-nos.html" class="text-decoration-none">Sobre Nós</a></li>
+                        <li><a href="recursos.html" class="text-decoration-none">Recursos</a></li>
+                        <li><a href="testemunhos.html" class="text-decoration-none">Testemunhos</a></li>
+                        <li><a href="contactos.html" class="text-decoration-none">Contactos</a></li>
+                    </ul>
+                </div>
+                <div class="custom-col-4">
+                    <h6 class="fw-bold mb-3">Contacto</h6>
+                    <a href="mailto:plataformacuidaconchego@outlook.pt" class="text-decoration-none text-white"><i class="fas fa-envelope me-2"></i>plataformacuidaconchego@outlook.pt</a>
+                    <p class="mb-1"><i class="fas fa-phone me-2"></i>+351 914 216 147</p>
+                    <div class="social-links mt-3">
+                        <a href="https://www.facebook.com/people/CuidAconchego/61567592259614/" class="me-3"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/cuidaconchego/" class="me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/luis-sa-430368198/" class="me-3"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="custom-row">
+                <div class="custom-col-12 text-center">
+                    <p class="text-muted mb-0">&copy; 2025 CuidAconchego. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/user-system.js"></script>
+    <script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+></script>
+<script>
+  //criar conta no emailjs
+  //criar um service
+  //criar um template
+ 
+  (function () {
+    emailjs.init("0Q9I-F08agd-b1-QO");
+  })();
+ 
+  document
+    .getElementById("contactForm")
+    .addEventListener("submit", function (e) {
+      e.preventDefault();
+      console.log('cucu')
+ 
+      emailjs
+        .send("service_6br3lr4", "template_izmw6it", {
+          name: document.getElementById("nome").value,
+          email: document.getElementById("email").value,
+          telefone: document.getElementById("telefone").value,
+          message: document.getElementById("mensagem").value,
+          subject: document.getElementById("assunto").value,
+        })
+        .then(
+          function (response) {
+            alert("Email enviado com sucesso!Aguarde o nosso contacto");
+          },
+          function (error) {
+            alert("Falha de envio");
+            console.error("EmailJS error:", error);
+          }
+        );
+    });
+</script>
+    <!-- <script>
+        // JavaScript para envio de e-mail direto
+        document.addEventListener('DOMContentLoaded', function() {
+            const enviarBtn = document.getElementById('enviarMensagem');
+            
+            enviarBtn.addEventListener('click', function() {
+                // Obter valores dos campos
+                const nome = document.getElementById('nome').value;
+                const email = document.getElementById('email').value;
+                const telefone = document.getElementById('telefone').value;
+                const assunto = document.getElementById('assunto').value;
+                const mensagem = document.getElementById('mensagem').value;
+                
+                // Validar campos obrigatórios
+                if (!nome || !email || !assunto || !mensagem) {
+                    alert('Por favor, preencha todos os campos obrigatórios.');
+                    return;
+                }
+                
+                // Construir o corpo do e-mail
+                const corpoEmail = `Nome: ${nome}%0D%0A` +
+                                 `Email: ${email}%0D%0A` +
+                                 `Telefone: ${telefone || 'Não fornecido'}%0D%0A` +
+                                 `Assunto: ${assunto}%0D%0A%0D%0A` +
+                                 `Mensagem:%0D%0A${mensagem}`;
+                
+                // Criar link mailto
+                const mailtoLink = `mailto:plataformacuidaconchego@outlook.pt?subject=Contacto CuidAconchego - ${assunto}&body=${corpoEmail}`;
+                
+                // Abrir cliente de e-mail
+                window.location.href = mailtoLink;
+                
+                // Mostrar mensagem de confirmação
+                setTimeout(() => {
+                    alert('O seu cliente de e-mail foi aberto. Se não aconteceu automaticamente, pode enviar um e-mail para plataformacuidaconchego@outlook.pt');
+                }, 1000);
+            });
+        });
+    </script> -->
+</body>
+</html>
+

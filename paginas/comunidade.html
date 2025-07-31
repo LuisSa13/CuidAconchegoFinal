@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Meta Tags -->
+    <title>Comunidade CuidAconchego - Blog, Fórum e Eventos | Recursos Comunitários</title>
+    <meta name="description" content="Junte-se à comunidade CuidAconchego. Aceda ao nosso blog com artigos especializados, participe no fórum de discussão e fique a par dos próximos eventos para cuidadores informais.">
+    <meta name="keywords" content="comunidade cuidadores, blog saúde, fórum cuidadores, eventos cuidadores, recursos comunitários, partilha experiências, apoio mútuo">
+    <meta name="author" content="CuidAconchego">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Comunidade CuidAconchego - Blog, Fórum e Eventos">
+    <meta property="og:description" content="Junte-se à nossa comunidade de cuidadores. Blog, fórum e eventos especializados para quem cuida.">
+    <meta property="og:image" content="../imagens/logo-01.png">
+    
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="../css/styles.css" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--branco);
+            color: var(--preto);
+            line-height: 1.6;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--terracota-claro) 0%, var(--cobre) 100%);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 40px;
+            margin-bottom: 40px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--bege-areia);
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .section-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--terracota-claro), var(--cobre));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .blog-post {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            border: 1px solid var(--bege-areia);
+        }
+
+        .blog-post:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .blog-post-image {
+            height: 200px;
+            background: linear-gradient(45deg, var(--azul-pastel), var(--bege-areia));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cobre);
+            font-size: 3rem;
+        }
+
+        .blog-post-content {
+            padding: 25px;
+        }
+
+        .blog-post-meta {
+            color: var(--cinza-pedra);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .blog-post-title {
+            color: var(--cobre);
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .blog-post-excerpt {
+            color: var(--preto);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .btn-read-more {
+            background: var(--terracota-claro);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-read-more:hover {
+            background: var(--cobre);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .forum-topic {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--terracota-claro);
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .forum-topic:hover {
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            transform: translateX(5px);
+        }
+
+        .forum-topic-title {
+            color: var(--cobre);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .forum-topic-meta {
+            color: var(--cinza-pedra);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .event-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            border: 1px solid var(--bege-areia);
+            transition: all 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .event-date {
+            background: var(--cobre);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .event-date-day {
+            font-size: 2rem;
+            display: block;
+        }
+
+        .event-date-month {
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+
+        .event-content {
+            padding: 25px;
+        }
+
+        .event-title {
+            color: var(--cobre);
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .event-details {
+            color: var(--cinza-pedra);
+            margin-bottom: 15px;
+        }
+
+        .event-description {
+            color: var(--preto);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .btn-register {
+            background: var(--azul-pastel);
+            color: var(--preto);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-register:hover {
+            background: var(--terracota-claro);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .stats-section {
+            background: var(--bege-areia);
+            padding: 60px 0;
+            margin: 60px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--cobre);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--preto);
+            font-weight: 500;
+            margin-top: 10px;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--azul-pastel) 0%, var(--bege-areia) 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .btn-cta {
+            background: var(--cobre);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .btn-cta:hover {
+            background: var(--terracota-claro);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 60px 0;
+            }
+            
+            .section-card {
+                padding: 30px 20px;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="../index.html">
+                <img src="../imagens/logo-01.png" alt="CuidAconchego Logo" style="height: 40px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <nav class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sobre-nos.html">Sobre Nós</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="recursos.html">Recursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="comunidade.html">Comunidade</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="testemunhos.html">Testemunhos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contactos.html">Contactos</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content text-center">
+                <h1 class="display-4 fw-bold mb-4">
+                    <i class="fas fa-users me-3"></i>
+                    Comunidade CuidAconchego
+                </h1>
+                <p class="lead mb-5">
+                    Conecte-se, partilhe experiências e cresça junto com outros cuidadores. 
+                    A nossa comunidade é um espaço seguro de apoio mútuo e aprendizagem contínua.
+                </p>
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <div class="d-flex flex-column align-items-center">
+                            <i class="fas fa-blog fa-3x mb-3"></i>
+                            <h4>Blog Especializado</h4>
+                            <p>Artigos e recursos atualizados</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex flex-column align-items-center">
+                            <i class="fas fa-comments fa-3x mb-3"></i>
+                            <h4>Fórum de Discussão</h4>
+                            <p>Partilhe e tire dúvidas</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex flex-column align-items-center">
+                            <i class="fas fa-calendar-alt fa-3x mb-3"></i>
+                            <h4>Eventos e Workshops</h4>
+                            <p>Formações e encontros</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <span class="stat-number">1,247</span>
+                        <div class="stat-label">Membros Ativos</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <span class="stat-number">89</span>
+                        <div class="stat-label">Artigos Publicados</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <span class="stat-number">342</span>
+                        <div class="stat-label">Discussões Ativas</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <span class="stat-number">25</span>
+                        <div class="stat-label">Eventos Realizados</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <!-- Blog Section -->
+        <section class="mb-5">
+            <div class="section-card">
+                <div class="section-icon">
+                    <i class="fas fa-blog"></i>
+                </div>
+                <h2 class="text-center mb-5" style="color: var(--cobre);">Blog CuidAconchego</h2>
+                <p class="text-center mb-5" style="color: var(--cinza-pedra);">
+                    Artigos especializados, dicas práticas e recursos atualizados para apoiar o seu dia a dia como cuidador.
+                </p>
+                
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <article class="blog-post">
+                            <div class="blog-post-image">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="blog-post-content">
+                                <div class="blog-post-meta">
+                                    <i class="fas fa-calendar me-2"></i>15 de Janeiro, 2024
+                                    <span class="ms-3"><i class="fas fa-user me-2"></i>Dr.ª Maria Silva</span>
+                                </div>
+                                <h3 class="blog-post-title">Como Gerir o Stress do Cuidador</h3>
+                                <p class="blog-post-excerpt">
+                                    Estratégias práticas para manter o equilíbrio emocional e físico enquanto cuida de um ente querido. 
+                                    Descubra técnicas de relaxamento e organização do tempo.
+                                </p>
+                                <a href="#" class="btn-read-more">
+                                    <i class="fas fa-arrow-right me-2"></i>Ler Mais
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <article class="blog-post">
+                            <div class="blog-post-image">
+                                <i class="fas fa-pills"></i>
+                            </div>
+                            <div class="blog-post-content">
+                                <div class="blog-post-meta">
+                                    <i class="fas fa-calendar me-2"></i>12 de Janeiro, 2024
+                                    <span class="ms-3"><i class="fas fa-user me-2"></i>Enf. João Santos</span>
+                                </div>
+                                <h3 class="blog-post-title">Gestão Segura de Medicamentos</h3>
+                                <p class="blog-post-excerpt">
+                                    Guia completo sobre como organizar, administrar e monitorizar medicamentos de forma segura. 
+                                    Inclui dicas sobre interações e efeitos secundários.
+                                </p>
+                                <a href="#" class="btn-read-more">
+                                    <i class="fas fa-arrow-right me-2"></i>Ler Mais
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <article class="blog-post">
+                            <div class="blog-post-image">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <div class="blog-post-content">
+                                <div class="blog-post-meta">
+                                    <i class="fas fa-calendar me-2"></i>10 de Janeiro, 2024
+                                    <span class="ms-3"><i class="fas fa-user me-2"></i>Arq. Ana Costa</span>
+                                </div>
+                                <h3 class="blog-post-title">Adaptações Domiciliárias Essenciais</h3>
+                                <p class="blog-post-excerpt">
+                                    Como tornar a casa mais segura e acessível para pessoas com mobilidade reduzida. 
+                                    Soluções práticas e económicas para diferentes necessidades.
+                                </p>
+                                <a href="#" class="btn-read-more">
+                                    <i class="fas fa-arrow-right me-2"></i>Ler Mais
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <a href="#" class="btn-cta">
+                        <i class="fas fa-plus me-2"></i>Ver Todos os Artigos
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Forum Section -->
+        <section class="mb-5">
+            <div class="section-card">
+                <div class="section-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h2 class="text-center mb-5" style="color: var(--cobre);">Fórum de Discussão</h2>
+                <p class="text-center mb-5" style="color: var(--cinza-pedra);">
+                    Partilhe experiências, tire dúvidas e conecte-se com outros cuidadores numa comunidade de apoio mútuo.
+                </p>
+                
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="forum-topic">
+                            <h4 class="forum-topic-title">
+                                <i class="fas fa-question-circle me-2"></i>
+                                Como lidar com a recusa de medicação?
+                            </h4>
+                            <p class="mb-3">
+                                A minha mãe tem 78 anos e recusa-se constantemente a tomar os medicamentos prescritos. 
+                                Alguém já passou por uma situação semelhante?
+                            </p>
+                            <div class="forum-topic-meta">
+                                <span><i class="fas fa-user me-1"></i>Maria123</span>
+                                <span><i class="fas fa-clock me-1"></i>Há 2 horas</span>
+                                <span><i class="fas fa-comments me-1"></i>12 respostas</span>
+                                <span><i class="fas fa-eye me-1"></i>45 visualizações</span>
+                            </div>
+                        </div>
+                        
+                        <div class="forum-topic">
+                            <h4 class="forum-topic-title">
+                                <i class="fas fa-lightbulb me-2"></i>
+                                Dicas para organizar rotinas diárias
+                            </h4>
+                            <p class="mb-3">
+                                Partilho aqui algumas estratégias que me têm ajudado a organizar melhor o dia a dia 
+                                com o meu pai que tem demência.
+                            </p>
+                            <div class="forum-topic-meta">
+                                <span><i class="fas fa-user me-1"></i>CuidadoraAna</span>
+                                <span><i class="fas fa-clock me-1"></i>Há 5 horas</span>
+                                <span><i class="fas fa-comments me-1"></i>8 respostas</span>
+                                <span><i class="fas fa-eye me-1"></i>67 visualizações</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="forum-topic">
+                            <h4 class="forum-topic-title">
+                                <i class="fas fa-heart me-2"></i>
+                                Apoio emocional - Como não me sentir culpada?
+                            </h4>
+                            <p class="mb-3">
+                                Às vezes sinto-me esgotada e com vontade de ter um tempo para mim. 
+                                É normal sentir-me culpada por isso?
+                            </p>
+                            <div class="forum-topic-meta">
+                                <span><i class="fas fa-user me-1"></i>Sofia_C</span>
+                                <span><i class="fas fa-clock me-1"></i>Há 1 dia</span>
+                                <span><i class="fas fa-comments me-1"></i>23 respostas</span>
+                                <span><i class="fas fa-eye me-1"></i>156 visualizações</span>
+                            </div>
+                        </div>
+                        
+                        <div class="forum-topic">
+                            <h4 class="forum-topic-title">
+                                <i class="fas fa-tools me-2"></i>
+                                Equipamentos de apoio - recomendações
+                            </h4>
+                            <p class="mb-3">
+                                Preciso de comprar uma cadeira de rodas. Alguém pode recomendar marcas 
+                                com boa relação qualidade-preço?
+                            </p>
+                            <div class="forum-topic-meta">
+                                <span><i class="fas fa-user me-1"></i>PedroSilva</span>
+                                <span><i class="fas fa-clock me-1"></i>Há 2 dias</span>
+                                <span><i class="fas fa-comments me-1"></i>15 respostas</span>
+                                <span><i class="fas fa-eye me-1"></i>89 visualizações</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <a href="#" class="btn-cta">
+                        <i class="fas fa-plus me-2"></i>Participar no Fórum
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section class="mb-5">
+            <div class="section-card">
+                <div class="section-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <h2 class="text-center mb-5" style="color: var(--cobre);">Próximos Eventos</h2>
+                <p class="text-center mb-5" style="color: var(--cinza-pedra);">
+                    Workshops, webinars e encontros presenciais para aprofundar conhecimentos e criar conexões.
+                </p>
+                
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="event-card">
+                            <div class="event-date">
+                                <span class="event-date-day">25</span>
+                                <span class="event-date-month">Jan</span>
+                            </div>
+                            <div class="event-content">
+                                <h4 class="event-title">Workshop: Primeiros Socorros para Cuidadores</h4>
+                                <div class="event-details">
+                                    <p><i class="fas fa-clock me-2"></i>14:00 - 17:00</p>
+                                    <p><i class="fas fa-map-marker-alt me-2"></i>Centro de Saúde de Lisboa</p>
+                                    <p><i class="fas fa-users me-2"></i>Máximo 20 participantes</p>
+                                </div>
+                                <p class="event-description">
+                                    Aprenda técnicas essenciais de primeiros socorros adaptadas às necessidades 
+                                    específicas de cuidadores informais.
+                                </p>
+                                <a href="#" class="btn-register">
+                                    <i class="fas fa-calendar-plus me-2"></i>Inscrever-me
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="event-card">
+                            <div class="event-date">
+                                <span class="event-date-day">02</span>
+                                <span class="event-date-month">Fev</span>
+                            </div>
+                            <div class="event-content">
+                                <h4 class="event-title">Webinar: Gestão do Stress e Burnout</h4>
+                                <div class="event-details">
+                                    <p><i class="fas fa-clock me-2"></i>19:00 - 20:30</p>
+                                    <p><i class="fas fa-laptop me-2"></i>Online via Zoom</p>
+                                    <p><i class="fas fa-users me-2"></i>Ilimitado</p>
+                                </div>
+                                <p class="event-description">
+                                    Sessão online com psicóloga especializada em apoio a cuidadores. 
+                                    Estratégias práticas para prevenir o esgotamento.
+                                </p>
+                                <a href="#" class="btn-register">
+                                    <i class="fas fa-video me-2"></i>Participar Online
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6">
+                        <div class="event-card">
+                            <div class="event-date">
+                                <span class="event-date-day">15</span>
+                                <span class="event-date-month">Fev</span>
+                            </div>
+                            <div class="event-content">
+                                <h4 class="event-title">Encontro: Partilha de Experiências</h4>
+                                <div class="event-details">
+                                    <p><i class="fas fa-clock me-2"></i>15:00 - 18:00</p>
+                                    <p><i class="fas fa-map-marker-alt me-2"></i>Biblioteca Municipal do Porto</p>
+                                    <p><i class="fas fa-users me-2"></i>Máximo 30 participantes</p>
+                                </div>
+                                <p class="event-description">
+                                    Encontro informal para partilhar experiências, desafios e sucessos. 
+                                    Inclui lanche e atividades de relaxamento.
+                                </p>
+                                <a href="#" class="btn-register">
+                                    <i class="fas fa-handshake me-2"></i>Juntar-me
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <a href="#" class="btn-cta">
+                        <i class="fas fa-calendar me-2"></i>Ver Todos os Eventos
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="display-5 fw-bold mb-4" style="color: var(--cobre);">
+                Junte-se à Nossa Comunidade
+            </h2>
+            <p class="lead mb-5" style="color: var(--preto);">
+                Faça parte de uma rede de apoio dedicada a cuidadores informais. 
+                Partilhe, aprenda e cresça connosco.
+            </p>
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <a href="#" class="btn-cta">
+                    <i class="fas fa-user-plus me-2"></i>Criar Conta
+                </a>
+                <a href="#" class="btn-cta">
+                    <i class="fas fa-envelope me-2"></i>Newsletter
+                </a>
+                <a href="#" class="btn-cta">
+                    <i class="fas fa-phone me-2"></i>Contactar-nos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <img src="../imagens/logo-01.png" alt="CuidAconchego" class="img-fluid mb-3" style="max-height: 60px;">
+                    <p>
+                        Plataforma de apoio especializado para cuidadores informais, 
+                        oferecendo recursos, ferramentas e uma comunidade de suporte.
+                    </p>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Navegação</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../index.html" class="text-light text-decoration-none">Início</a></li>
+                        <li><a href="sobre-nos.html" class="text-light text-decoration-none">Sobre Nós</a></li>
+                        <li><a href="recursos.html" class="text-light text-decoration-none">Recursos</a></li>
+                        <li><a href="comunidade.html" class="text-light text-decoration-none">Comunidade</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Comunidade</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light text-decoration-none">Blog</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Fórum</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Eventos</a></li>
+                        <li><a href="#" class="text-light text-decoration-none">Newsletter</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>Contacto</h5>
+                    <p><i class="fas fa-envelope me-2"></i>plataformacuidaconchego@outlook.pt</p>
+                    <p><i class="fas fa-phone me-2"></i>+351 914 216 147</p>
+                    <div class="mt-3">
+                        <a href="#" class="text-light me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-light me-3"><i class="fab fa-linkedin fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2024 CuidAconchego. Todos os direitos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-light text-decoration-none me-3">Política de Privacidade</a>
+                    <a href="#" class="text-light text-decoration-none">Termos de Uso</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/user-system.js"></script>
+    
+    <script>
+        // Smooth scrolling para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animação de entrada para cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Aplicar animação a todos os cards
+        document.querySelectorAll('.section-card, .blog-post, .forum-topic, .event-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Contador animado para estatísticas
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current).toLocaleString();
+            }, 20);
+        }
+
+        // Observar seção de estatísticas
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        const target = parseInt(stat.textContent.replace(/,/g, ''));
+                        animateCounter(stat, target);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats-section');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+    </script>
+</body>
+</html>
+
